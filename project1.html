@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio Website Project - Muhammad Maaz's design and development work">
+  <title>Portfolio Website | Muhammad Maaz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-light: #f5f1ed;
+      --bg-cream: #faf8f5;
+      --text-dark: #1a1a1a;
+      --text-muted: #666666;
+      --accent-orange: #ff6b35;
+      --border-light: #e8e3dd;
+      --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(245, 241, 237, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 1000;
+      padding: 16px 20px;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-back:hover {
+      color: var(--accent-orange);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 20px 50px;
+    }
+
+    .project-header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: slideUp 0.8s ease;
+    }
+
+    .project-header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .project-header p {
+      font-size: 1.2rem;
+      color: var(--accent-orange);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .project-header .description {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .project-details {
+      background: var(--bg-cream);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border-light);
+      margin-bottom: 40px;
+      animation: slideUp 0.8s ease 0.2s both;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .detail-item h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .detail-item p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .content-section {
+      margin-bottom: 50px;
+      animation: slideUp 0.8s ease 0.3s both;
+    }
+
+    .content-section h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-weight: 600;
+      border-bottom: 3px solid var(--accent-orange);
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .content-section p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .feature-item {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-5px);
+    }
+
+    .feature-item h3 {
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .tag {
+      background: #fff3ed;
+      color: var(--accent-orange);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid #ffc5a0;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-orange), #ff5722);
+      color: white;
+      padding: 50px 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 60px 0;
+      animation: slideUp 0.8s ease 0.4s both;
+    }
+
+    .cta-section h2 {
+      color: white;
+      border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: var(--accent-orange);
+      padding: 12px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .project-header h1 {
+        font-size: 2.2rem;
+      }
+
+      main {
+        padding: 80px 15px 40px;
+      }
+
+      .project-details {
+        padding: 25px;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .cta-section {
+        padding: 35px 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-header h1 {
+        font-size: 1.8rem;
+      }
+
+      main {
+        padding: 70px 12px 30px;
+      }
+
+      .project-details {
+        padding: 20px;
+      }
+
+      .content-section h2 {
+        font-size: 1.4rem;
+      }
+
+      .features-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Maaz</a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="project-header">
+    <p>PROJECT 01</p>
+    <h1>Portfolio Website</h1>
+    <p class="description">A modern, clean, and responsive portfolio website showcasing design and development skills with smooth animations and professional UI.</p>
+  </div>
+
+  <div class="project-details">
+    <div class="details-grid">
+      <div class="detail-item">
+        <h3>Timeline</h3>
+        <p>3 Weeks</p>
+      </div>
+      <div class="detail-item">
+        <h3>Role</h3>
+        <p>Designer & Developer</p>
+      </div>
+      <div class="detail-item">
+        <h3>Industry</h3>
+        <p>Personal Branding</p>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">Responsive Design</span>
+      <span class="tag">Web Development</span>
+      <span class="tag">UI/UX Design</span>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <h2>Overview</h2>
+    <p>This portfolio website was created to showcase my design and development capabilities. It features a clean, professional aesthetic with a light color scheme that ensures excellent readability and modern appeal.</p>
+    <p>The website is fully responsive, optimized for all devices, and includes smooth animations that enhance user experience without being distracting.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Key Features</h2>
+    <div class="features-list">
+      <div class="feature-item">
+        <h3>✨ Responsive Design</h3>
+        <p>Perfect display on desktop, tablet, and mobile devices with flexible grid layouts.</p>
+      </div>
+      <div class="feature-item">
+        <h3>🎨 Modern UI</h3>
+        <p>Clean light theme with professional color palette and typography choices.</p>
+      </div>
+      <div class="feature-item">
+        <h3>⚡ Fast & Optimized</h3>
+        <p>Pure HTML/CSS with minimal dependencies for lightning-fast load times.</p>
+      </div>
+      <div class="feature-item">
+        <h3>🎭 Smooth Animations</h3>
+        <p>Subtle, elegant transitions and hover effects using CSS3 animations.</p>
+      </div>
+      <div class="feature-item">
+        <h3>📱 Mobile First</h3>
+        <p>Designed mobile-first approach ensuring great experience on all sizes.</p>
+      </div>
+      <div class="feature-item">
+        <h3>📧 Contact Form</h3>
+        <p>Integrated contact form using FormSubmit for easy communication.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Design Process</h2>
+    <p><strong>1. Research & Planning:</strong> Analyzed portfolio best practices and user expectations for designer portfolios.</p>
+    <p><strong>2. Design:</strong> Created wireframes and visual designs focusing on clean aesthetics and excellent typography.</p>
+    <p><strong>3. Development:</strong> Built responsive HTML/CSS with smooth animations and interactions.</p>
+    <p><strong>4. Testing:</strong> Tested across multiple devices and browsers to ensure consistency and performance.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Technology & Tools</h2>
+    <div class="features-list">
+      <div class="feature-item">
+        <h3>HTML5</h3>
+        <p>Semantic markup for proper structure and SEO optimization.</p>
+      </div>
+      <div class="feature-item">
+        <h3>CSS3</h3>
+        <p>Grid, Flexbox, animations, and modern styling techniques.</p>
+      </div>
+      <div class="feature-item">
+        <h3>JavaScript</h3>
+        <p>Minimal JS for thank you page redirect and form handling.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Google Fonts</h3>
+        <p>Outfit and Inter fonts for professional typography.</p>
+      </div>
+      <div class="feature-item">
+        <h3>FormSubmit</h3>
+        <p>Free form submission service without backend requirements.</p>
+      </div>
+      <div class="feature-item">
+        <h3>GitHub Pages</h3>
+        <p>Deployed on GitHub Pages for free and reliable hosting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Results & Impact</h2>
+    <p>✅ <strong>100% Responsive:</strong> Works flawlessly on all device sizes</p>
+    <p>✅ <strong>Fast Performance:</strong> Loads in under 1 second with no heavy dependencies</p>
+    <p>✅ <strong>Professional Appearance:</strong> Clean, modern design that impresses potential clients</p>
+    <p>✅ <strong>Fully Functional:</strong> All buttons, links, and forms working perfectly</p>
+  </section>
+
+  <div class="cta-section">
+    <h2>Interested in Similar Work?</h2>
+    <p>Let's collaborate on your next design or development project!</p>
+    <a href="index.html#contact" class="cta-button">Get In Touch →</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Muhammad Maaz Iqbal. All rights reserved.</p>
+  <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">Project Portfolio</p>
+</footer>
+
+</body>
+  </html>
+                          

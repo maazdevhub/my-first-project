@@ -24,17 +24,20 @@
       color: #333;
       font-size: 18px;
     }
-    a.button {
+    a.button, button {
       display: inline-block;
       margin: 15px 0;
       padding: 10px 20px;
       background: #4CAF50;
       color: white;
       text-decoration: none;
+      border: none;
       border-radius: 5px;
       font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
     }
-    a.button:hover {
+    a.button:hover, button:hover {
       background: #45a049;
     }
     footer {
@@ -55,12 +58,24 @@
 
 <main>
   <p>Hello! I am Maaz, learning web development and building projects.</p>
+
+  <!-- Working button -->
+  <button onclick="showMessage()">Click Me!</button>
+
+  <p id="message" style="color:#333; font-weight:bold;"></p>
+
   <a href="#" class="button">Contact Me</a>
 </main>
+
+<script>
+  function showMessage() {
+    document.getElementById("message").innerText = "You clicked the button! Keep learning web development!";
+  }
+</script>
 
 <footer>
   &copy; 2026 Maaz Dev Hub
 </footer>
 
 </body>
-  </html>
+</html>

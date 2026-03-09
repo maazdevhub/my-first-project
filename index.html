@@ -3,261 +3,408 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Maaz - Graphic Designer & Web Developer Portfolio. Remote work specialist in UI/UX, Social Media Design, and Motion Graphics.">
+  <meta name="description" content="Maaz - Graphic Designer & Web Developer. Specialized in UI/UX, Social Media Design, Motion Graphics. Available for remote work.">
+  <meta name="theme-color" content="#f5f1ed">
   <title>Maaz - Graphic Designer & Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%236a11cb'>M</text></svg>">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
     :root {
-      --primary: #6a11cb;
-      --secondary: #2575fc;
-      --accent: #ff7f50;
-      --dark: #0a0e27;
-      --light: #e0e0e0;
+      --bg-light: #f5f1ed;
+      --bg-cream: #faf8f5;
+      --text-dark: #1a1a1a;
+      --text-muted: #666666;
+      --accent-orange: #ff6b35;
+      --accent-blue: #0066ff;
+      --border-light: #e8e3dd;
+      --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
     }
     
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
     
-    body { 
-      font-family: 'Poppins', sans-serif; 
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #fff; 
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
       line-height: 1.6;
-      min-height: 100vh;
+      overflow-x: hidden;
     }
     
-    /* Navigation */
+    /* ============ NAVIGATION ============ */
     nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      background: rgba(10, 14, 39, 0.95);
-      padding: 15px 20px;
+      width: 100%;
+      background: rgba(245, 241, 237, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 1000;
+      padding: 16px 20px;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
     }
     
-    nav .logo {
-      font-size: 1.5rem;
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--accent-orange);
+      text-decoration: none;
+      letter-spacing: -0.5px;
     }
     
-    nav .nav-links {
+    .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 30px;
       list-style: none;
     }
     
-    nav a {
-      color: #fff;
+    .nav-links a {
+      color: var(--text-dark);
       text-decoration: none;
-      transition: color 0.3s ease;
       font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
     }
     
-    nav a:hover { color: var(--accent); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-orange);
+      transition: width 0.3s ease;
+    }
     
-    /* Header */
-    header { 
-      padding: 80px 20px 60px;
+    .nav-links a:hover {
+      color: var(--accent-orange);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 15px;
+      }
+      
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .nav-links {
+        gap: 10px;
+      }
+      
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* ============ HEADER ============ */
+    header {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-cream) 100%);
       text-align: center;
-      background: rgba(0, 0, 0, 0.2);
     }
     
-    header h1 { 
-      font-size: 3.5rem; 
-      font-weight: 700; 
-      margin-bottom: 15px;
-      animation: fadeInDown 0.8s ease;
+    header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+      animation: slideUp 0.8s ease 0.1s both;
     }
     
-    header .tagline { 
-      font-size: 1.3rem; 
-      color: var(--light);
-      margin-bottom: 30px;
-      animation: fadeInUp 0.8s ease 0.2s both;
+    header .tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      animation: slideUp 0.8s ease 0.2s both;
     }
     
-    header .cta-buttons {
+    header .subtitle {
+      font-size: 1rem;
+      color: var(--accent-orange);
+      margin-bottom: 40px;
+      font-weight: 600;
+      animation: slideUp 0.8s ease 0.3s both;
+    }
+    
+    .header-cta {
       display: flex;
-      gap: 15px;
+      gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      animation: fadeInUp 0.8s ease 0.4s both;
+      animation: slideUp 0.8s ease 0.4s both;
     }
     
-    /* Main Content */
-    main { 
-      max-width: 1000px; 
-      margin: 0 auto; 
+    /* ============ MAIN CONTENT ============ */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 0 20px;
     }
     
-    section { 
-      margin: 60px 0; 
-      padding: 40px 30px; 
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+    section {
+      margin: 100px 0;
+      animation: fadeIn 0.8s ease;
     }
     
     section h2 {
+      font-family: 'Outfit', sans-serif;
       font-size: 2.2rem;
-      margin-bottom: 30px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 50px;
       text-align: center;
-      color: var(--accent);
+      position: relative;
+      display: inline-block;
+      width: 100%;
     }
     
-    /* Skills Section */
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--accent-orange);
+      border-radius: 2px;
+    }
+    
+    /* ============ ABOUT SECTION ============ */
+    .about-content {
+      background: var(--bg-cream);
+      padding: 50px 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .about-content p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    
+    .about-content p:last-child {
+      margin-bottom: 0;
+      color: var(--accent-orange);
+      font-weight: 600;
+    }
+    
+    /* ============ SKILLS SECTION ============ */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 50px;
     }
     
     .skill-card {
-      background: rgba(255, 127, 80, 0.1);
-      border: 2px solid var(--accent);
-      border-radius: 15px;
-      padding: 20px;
+      background: var(--bg-cream);
+      border: 2px solid var(--border-light);
+      border-radius: 12px;
+      padding: 32px 24px;
       text-align: center;
-      transition: all 0.3s ease;
-    }
-    
-    .skill-card:hover {
-      transform: translateY(-8px);
-      background: rgba(255, 127, 80, 0.2);
-      box-shadow: 0 10px 30px rgba(255, 127, 80, 0.3);
-    }
-    
-    .skill-card h3 {
-      color: var(--accent);
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-    
-    .skill-card p {
-      font-size: 0.9rem;
-      color: var(--light);
-    }
-    
-    /* Projects Section */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-    
-    .project-card {
-      background: rgba(37, 117, 252, 0.1);
-      border: 2px solid var(--secondary);
-      border-radius: 15px;
-      padding: 25px;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       overflow: hidden;
     }
     
-    .project-card::before {
+    .skill-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      height: 4px;
+      background: var(--accent-orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    
+    .skill-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .skill-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .skill-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+    }
+    
+    .skill-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    /* ============ PROJECTS SECTION ============ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 50px;
+    }
+    
+    .project-card {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
     }
     
     .project-card:hover {
+      border-color: var(--accent-orange);
       transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(37, 117, 252, 0.3);
+      box-shadow: var(--shadow-medium);
     }
     
     .project-card h3 {
-      color: var(--secondary);
-      margin-bottom: 10px;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
     }
     
     .project-card p {
       font-size: 0.95rem;
-      color: var(--light);
-      margin-bottom: 15px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+      line-height: 1.7;
     }
     
-    .project-card .tags {
+    .project-tags {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
-    
-    .tag {
-      background: rgba(255, 127, 80, 0.2);
-      color: var(--accent);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      border: 1px solid var(--accent);
-    }
-    
-    /* Form Styles */
-    .contact-form {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    
-    .form-group {
       margin-bottom: 20px;
     }
     
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
+    .tag {
+      background: #fff3ed;
+      color: var(--accent-orange);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
       font-weight: 600;
-      color: var(--accent);
+      border: 1px solid #ffc5a0;
+    }
+    
+    /* ============ CONTACT SECTION ============ */
+    .contact-wrapper {
+      background: var(--bg-cream);
+      padding: 60px 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact-wrapper > p {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
     }
     
     input, textarea {
-      width: 100%;
-      padding: 12px 15px;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border-light);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
+      background: white;
+      color: var(--text-dark);
       transition: all 0.3s ease;
     }
     
     input::placeholder, textarea::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: #999;
     }
     
     input:focus, textarea:focus {
       outline: none;
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 20px rgba(255, 127, 80, 0.3);
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
     }
     
-    textarea { resize: vertical; min-height: 120px; }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
     
-    /* Buttons */
+    /* ============ BUTTONS ============ */
     button, .button {
-      background: linear-gradient(135deg, var(--accent), #ff5722);
-      color: #fff;
-      padding: 12px 30px;
+      padding: 12px 28px;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: 600;
       font-size: 0.95rem;
       cursor: pointer;
@@ -265,85 +412,99 @@
       text-decoration: none;
       display: inline-block;
       text-align: center;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
     }
     
-    button:hover, .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255, 127, 80, 0.4);
+    button.primary, .button.primary {
+      background: var(--accent-orange);
+      color: white;
     }
     
-    button:active {
-      transform: translateY(-1px);
+    button.primary:hover, .button.primary:hover {
+      background: #e55a24;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
     }
     
-    button.secondary {
+    button.secondary, .button.secondary {
       background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
+      border: 2px solid var(--accent-orange);
+      color: var(--accent-orange);
     }
     
-    button.secondary:hover {
-      background: var(--accent);
-      color: #fff;
+    button.secondary:hover, .button.secondary:hover {
+      background: var(--accent-orange);
+      color: white;
+      transform: translateY(-2px);
     }
     
-    /* Social Links */
+    .button.small {
+      padding: 8px 20px;
+      font-size: 0.85rem;
+    }
+    
+    /* ============ SOCIAL BUTTONS ============ */
+    .social-section {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-light);
+    }
+    
+    .social-section h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
     .social-links {
       display: flex;
-      gap: 20px;
+      gap: 12px;
       justify-content: center;
-      margin-top: 30px;
       flex-wrap: wrap;
     }
     
-    .social-links a {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgba(255, 127, 80, 0.2);
-      border: 2px solid var(--accent);
+    .social-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: white;
+      border: 2px solid var(--border-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--accent);
       text-decoration: none;
+      color: var(--text-dark);
+      font-size: 1.3rem;
       transition: all 0.3s ease;
-      font-size: 1.2rem;
     }
     
-    .social-links a:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-5px);
+    .social-link:hover {
+      background: var(--accent-orange);
+      color: white;
+      border-color: var(--accent-orange);
+      transform: translateY(-4px);
     }
     
-    /* Footer */
-    footer { 
-      text-align: center; 
-      padding: 30px 20px; 
-      background: rgba(0, 0, 0, 0.5);
-      margin-top: 80px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 100px;
+      font-size: 0.9rem;
     }
     
     footer p {
-      color: var(--light);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
+    /* ============ ANIMATIONS ============ */
+    @keyframes slideUp {
       from {
         opacity: 0;
         transform: translateY(30px);
@@ -354,66 +515,156 @@
       }
     }
     
-    /* Responsive */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* ============ RESPONSIVE ============ */
     @media (max-width: 768px) {
-      header h1 { font-size: 2.5rem; }
-      header .tagline { font-size: 1.1rem; }
-      section { padding: 25px 15px; }
-      section h2 { font-size: 1.8rem; }
-      nav .nav-links { gap: 10px; }
-      .header .cta-buttons { flex-direction: column; }
-      button, .button { width: 100%; }
+      header {
+        padding-top: 100px;
+        padding-bottom: 60px;
+      }
+      
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      header .tagline {
+        font-size: 1.1rem;
+      }
+      
+      section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 35px;
+      }
+      
+      .about-content {
+        padding: 35px 25px;
+      }
+      
+      .contact-wrapper {
+        padding: 35px 25px;
+      }
+      
+      .header-cta {
+        gap: 12px;
+      }
+      
+      button, .button {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+      }
     }
     
     @media (max-width: 480px) {
-      header { padding: 50px 15px 40px; }
-      header h1 { font-size: 2rem; }
-      nav { flex-direction: column; gap: 15px; }
-      nav .nav-links { gap: 15px; justify-content: center; }
-      section { margin: 40px 0; }
-      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      header {
+        padding-top: 80px;
+        padding-bottom: 40px;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header .tagline {
+        font-size: 1rem;
+      }
+      
+      header .subtitle {
+        margin-bottom: 30px;
+      }
+      
+      section {
+        margin: 60px 0;
+      }
+      
+      section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+      
+      .nav-links {
+        gap: 12px;
+      }
+      
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+      
+      .header-cta {
+        flex-direction: column;
+      }
+      
+      button, .button {
+        width: 100%;
+        padding: 12px 20px;
+      }
+      
+      .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-wrapper {
+        padding: 25px 20px;
+      }
+      
+      input, textarea {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
 
-<!-- Navigation -->
+<!-- NAVIGATION -->
 <nav>
-  <div class="logo">M</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-container">
+    <a href="#" class="nav-logo">Maaz</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- Header -->
+<!-- HEADER -->
 <header>
-  <h1>Maaz</h1>
+  <h1>Muhammad Maaz</h1>
   <p class="tagline">Graphic Designer & Web Developer</p>
-  <p style="margin-bottom: 20px; font-size: 1rem;">Crafting beautiful designs & interactive experiences | Remote-first from Pakistan</p>
-  <div class="cta-buttons">
-    <a href="#projects" class="button">View My Work</a>
-    <a href="#contact" class="button secondary">Get In Touch</a>
+  <p class="subtitle">Creating beautiful designs & interactive experiences from Pakistan</p>
+  <div class="header-cta">
+    <a href="#projects" class="button primary">View My Work</a>
+    <a href="#contact" class="button secondary">Let's Talk</a>
   </div>
 </header>
 
+<!-- MAIN CONTENT -->
 <main>
 
-  <!-- About Section -->
+  <!-- ABOUT SECTION -->
   <section id="about">
     <h2>About Me</h2>
-    <p style="text-align: center; font-size: 1.05rem;">Hi! I'm Muhammad Maaz Iqbal, a graphic designer and web developer based in Pakistan. I specialize in creating stunning visual designs and building responsive web experiences. I'm passionate about UI/UX design, social media content, and motion graphics.</p>
-    <p style="text-align: center; margin-top: 15px; color: var(--light);">I'm actively seeking remote opportunities where I can contribute my skills and grow with creative teams.</p>
+    <div class="about-content">
+      <p>Hi! I'm Muhammad Maaz Iqbal, a graphic designer and web developer based in Pakistan. I specialize in creating stunning visual designs and building responsive web experiences.</p>
+      <p>I'm passionate about UI/UX design, social media content creation, and motion graphics. I'm actively seeking remote opportunities to contribute my skills and grow with creative teams.</p>
+      <p>🚀 Available for remote work</p>
+    </div>
   </section>
 
-  <!-- Skills Section -->
+  <!-- SKILLS SECTION -->
   <section id="skills">
     <h2>Skills & Tools</h2>
     <div class="skills-grid">
       <div class="skill-card">
-        <h3>📐 Design</h3>
+        <h3>🎨 Design</h3>
         <p>Adobe Creative Suite, Figma, UI/UX Design, Canva, CorelDRAW</p>
       </div>
       <div class="skill-card">
@@ -425,109 +676,108 @@
         <p>Social Media Design, Content Creation, Branding, Posts & Stories</p>
       </div>
       <div class="skill-card">
-        <h3>💻 Web Development</h3>
-        <p>HTML, CSS, JavaScript, Responsive Design, Web Basics</p>
+        <h3>💻 Web</h3>
+        <p>HTML, CSS, JavaScript, Responsive Design</p>
       </div>
       <div class="skill-card">
-        <h3>🎨 Branding</h3>
+        <h3>🏷️ Branding</h3>
         <p>Logo Design, Brand Identity, Visual Consistency</p>
       </div>
       <div class="skill-card">
-        <h3>✨ Other</h3>
+        <h3>✨ Soft Skills</h3>
         <p>Problem Solving, Quick Learning, Attention to Detail</p>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- PROJECTS SECTION -->
   <section id="projects">
-    <h2>Featured Projects</h2>
+    <h2>Featured Work</h2>
     <div class="projects-grid">
       <div class="project-card">
         <h3>Portfolio Website</h3>
-        <p>A modern, responsive portfolio site showcasing design and development skills with smooth animations and clean UI.</p>
-        <div class="tags">
+        <p>A modern, responsive portfolio site showcasing design and development skills with smooth animations and clean UI design.</p>
+        <div class="project-tags">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
           <span class="tag">Design</span>
         </div>
-        <a href="#" class="button" style="font-size: 0.9rem; padding: 8px 20px;">View Project</a>
+        <a href="index.html" class="button primary small">View Project →</a>
       </div>
       <div class="project-card">
         <h3>Social Media Templates</h3>
-        <p>Professional design templates for Instagram, Facebook, and LinkedIn posts. Ready to customize and use.</p>
-        <div class="tags">
+        <p>Professional design templates for Instagram, Facebook, and LinkedIn. Fully customizable and ready to use for businesses.</p>
+        <div class="project-tags">
           <span class="tag">Figma</span>
           <span class="tag">Design</span>
           <span class="tag">Social</span>
         </div>
-        <a href="#" class="button" style="font-size: 0.9rem; padding: 8px 20px;">View Project</a>
+        <a href="https://www.instagram.com/maaz_0951?igsh=ZGE4bXZ3MmNqYW00" target="_blank" class="button primary small">View Project →</a>
       </div>
       <div class="project-card">
         <h3>UI/UX Redesign</h3>
         <p>Complete redesign of a mobile app interface with improved user experience and modern design principles.</p>
-        <div class="tags">
+        <div class="project-tags">
           <span class="tag">Figma</span>
           <span class="tag">UI/UX</span>
           <span class="tag">Mobile</span>
         </div>
-        <a href="#" class="button" style="font-size: 0.9rem; padding: 8px 20px;">View Project</a>
+        <a href="#contact" class="button primary small">Get Project Details →</a>
       </div>
     </div>
-    <p style="text-align: center; margin-top: 40px; color: var(--light);"><strong>More projects coming soon!</strong> Check back for updates on my latest work.</p>
   </section>
 
-  <!-- Contact Section -->
+  <!-- CONTACT SECTION -->
   <section id="contact">
-    <h2>Let's Work Together</h2>
-    <p style="text-align: center; margin-bottom: 30px;">I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
-    
-    <div class="contact-form">
-      <form action="https://formsubmit.co/your-email@gmail.com" method="POST">
+    <h2>Get In Touch</h2>
+    <div class="contact-wrapper">
+      <p>I'm always interested in hearing about new projects and opportunities. Reach out and let's create something great together!</p>
+      
+      <form class="contact-form" action="https://formsubmit.co/maaziqbal0987@gmail.com" method="POST">
         <div class="form-group">
-          <label for="name">Your Name *</label>
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Muhammad..." required>
         </div>
         
         <div class="form-group">
-          <label for="email">Your Email *</label>
-          <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
         </div>
         
         <div class="form-group">
-          <label for="subject">Subject *</label>
+          <label for="subject">Subject</label>
           <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
         </div>
         
         <div class="form-group">
-          <label for="message">Message *</label>
-          <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..." required></textarea>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
         </div>
         
-        <!-- FormSubmit configuration -->
+        <!-- FormSubmit config -->
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://yourusername.github.io/portfolio/thankyou.html">
+        <input type="hidden" name="_next" value="thankyou.html">
+        <input type="hidden" name="_subject" value="New Portfolio Inquiry!">
         
-        <button type="submit">Send Message</button>
+        <button type="submit" class="primary" style="width: 100%;">Send Message</button>
       </form>
-    </div>
-    
-    <div class="social-links">
-      <a href="https://github.com/yourusername" title="GitHub" target="_blank">📘</a>
-      <a href="https://linkedin.com/in/yourusername" title="LinkedIn" target="_blank">💼</a>
-      <a href="https://twitter.com/yourusername" title="Twitter" target="_blank">𝕏</a>
-      <a href="mailto:your-email@gmail.com" title="Email">✉️</a>
-    </div>
-  </section>
-
-</main>
-
-<!-- Footer -->
-<footer>
-  <p>&copy; 2026 Muhammad Maaz Iqbal. All rights reserved.</p>
-  <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">Designed & Built with ❤️</p>
-</footer>
-
-</body>
-  </html>
-  
+      
+      <!-- SOCIAL LINKS -->
+      <div class="social-section">
+        <h3>Or connect with me here:</h3>
+        <div class="social-links">
+          <a href="https://www.instagram.com/maaz_0951?igsh=ZGE4bXZ3MmNqYW00" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
+            <span>📸</span>
+          </a>
+          <a href="https://www.facebook.com/share/1DPFhnjSM6/" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook">
+            <span>👍</span>
+          </a>
+          <a href="https://x.com/MaazI43228" target="_blank" rel="noopener noreferrer" class="social-link" title="X">
+            <span>𝕏</span>
+          </a>
+          <a href="https://wa.me/923142037831" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp">
+            <span>💬</span>
+          </a>
+          <a href="mailto:maaziqbal0987@gmail.com" class="social-link" title="Email">
+            <span>✉️</span>
+        
